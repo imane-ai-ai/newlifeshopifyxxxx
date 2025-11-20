@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="{{ request.locale | default: 'fr' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>{% if template == 'index' %}{{ shop.name }} - {{ shop.meta_description | default: 'CROWN TIME - Montres Suisses Premium' }}{% else %}{{ page_title }}{% endif %}</title>
+
+    <meta name="description" content="{{ shop.meta_description | escape }}">
+    <meta name="theme-color" content="#D4AF37">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ shop.name }}">
+    <meta property="og:description" content="{{ shop.meta_description }}">
+    <meta property="og:image" content="{{ 'image.png' | asset_url }}">
+
+    <!-- Fonts (upload to assets) -->
+    <link rel="preload" href="{{ 'playfair-400.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ 'playfair-700.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}" />
+
+    {% if settings.facebook_pixel_id != blank %}
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '{{ settings.facebook_pixel_id }}');
+      fbq('track', 'PageView');
+    </script>
+    {% endif %}
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="template-{{ template }}">
+    {% section 'header' %}
+    <main role="main">
+      {{ content_for_layout }}
+    </main>
+    {% section 'footer' %}
+
+    <!-- Theme JS bundle (upload as assets/theme.js) -->
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+    {{ content_for_footer }}
+  </body>
+</html>

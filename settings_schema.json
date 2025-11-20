@@ -1,0 +1,12 @@
+[
+  {
+    "name": "General",
+    "settings": [
+      {
+        "type": "text",
+        "id": "facebook_pixel_id",
+        "label": "Facebook Pixel ID"
+      }
+    ]
+  }
+]

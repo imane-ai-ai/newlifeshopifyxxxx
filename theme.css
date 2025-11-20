@@ -1,0 +1,8 @@
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/playfair-400.woff2') format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/playfair-700.woff2') format('woff2')}
+*,::before,::after{box-sizing:border-box}
+html{line-height:1.5;font-family:ui-sans-serif,system-ui,sans-serif}
+body{margin:0;overflow-x:hidden}
+#root{min-height:100vh}
+.bg-gray-100{background-color:#f3f4f6}
+.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}
